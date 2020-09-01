@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="This dashboard shows the relationship between latitude and weather conditions.">
+    <meta name="keywords" content="Datascience,JavaScript,HTML,CSS,D3.js,Visualisation">
+    <meta name="author" content="Jamie Tan">
+    <title>ALIENS-R-REAL</title>
+
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!-- Insert bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/bootstrap_darkly.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <!-- ========== Navbar ========== -->
+    <div class="bs-component">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-secondary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">UFO Sightings
+                    <i class="fas fa-hand-spock"></i>
+                </a>
+            </div>       
+        </nav>
+    </div>    
+
+    <!-- ========== Containers ========== -->
+    <div class="hero">
+        <h1 style="text-align: center; margin-top: 200px; font-family: inherit;">UFO Sightings</h1>
+        <h5 style="text-align: center; margin-bottom:120px;">Expect the Unexpected
+            <i class="fas fa-meteor" style="color: #f39c12"></i>
+        </h5>
+    </div>
+
+    <div class="container">
+        <div class="bs-component">
+            <div class="row">
+                <div class="col-md-12" style="margin-top:30px"></div>
+            </div>    
+            <div class="row">
+                <div class="col-md-2">
+                    <aside class="filters">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">Filter Search</div>
+                        <div class="panel-body">
+                            <form>
+                            <div class="form-group">
+                                <ul class="list-group" id="filters">
+                                <li class="filter list-group-item">
+                                    <label for="date">Enter a Date</label>
+                                    <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
+                                </li>
+                                </ul>
+                            </div>
+                            <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                            </form>
+                        </div>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-md-10">
+                    <div id="table-area" class="">
+                    <table id="ufo-table" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="table-head">Date</th>
+                            <th class="table-head">City</th>
+                            <th class="table-head">State</th>
+                            <th class="table-head">Country</th>
+                            <th class="table-head">Shape</th>
+                            <th class="table-head">Duration</th>
+                            <th class="table-head">Comments</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========== Footer ========== -->
+    <footer class="footer">
+        <span class="bottom">UFO Sightings</span>
+    </footer>
+
+<!-- Bringing in Javascript to enable components in bootstrap -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/231099ded4.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
