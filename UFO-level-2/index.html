@@ -46,14 +46,32 @@
                         <div class="panel panel-default">
                         <div class="panel-heading card-header"><h5><strong>Filter Search</strong></h5></div>
                         <div class="panel-body">
-                            <form id="form">
+                            <form action="#" method="post" id="form" class="form">
                                 <div class="form-group">
                                     <ul class="list-group" id="filters">
-                                    <li class="filter list-group-item">
-                                        <label for="date">Enter a Date</label>
-                                        <input class="form-control" id="datetime" type="text" placeholder="1/1/2010">
-                                        <small id="text-format" class="form-text text muted">Enter mm/dd/yyyy</small>
-                                    </li>
+                                        <li class="filter list-group-item">
+                                            <label for="date">Enter a Date</label>
+                                            <input class="form-control" id="datetime" type="text" placeholder="1/1/2010">
+                                            <small id="text-format" class="form-text text muted">Enter mm/dd/yyyy</small>
+                                        </li>
+                                        <li class="filter list-group-item">
+                                            <select class="custom-select" name='country-select' id='country-select'>
+                                                <option selected>Country selection</option>
+                                                <option value="us">USA</option>
+                                                <option value="ca">Canada</option>
+                                            </select>
+                                        </li>
+                                        <li class="filter list-group-item">
+                                            <select class="custom-select" name="choices" id="choices">
+                                                <option selected>State selection</option>
+                                                <!-- populated using JavaScript: code in app.js -->
+                                            </select>
+                                        </li>
+                                        <li class="filter list-group-item">
+                                            <label for="city">Enter a City</label>
+                                            <input class="form-control" id="city-select" type="text" placeholder="phoenix">
+                                            <small id="text-format" class="form-text text muted">Enter city in small caps</small>
+                                        </li>
                                     </ul>
                                 </div>
                                 <button id="filter-btn" type="button" class="btn btn-primary btn-block">Filter Table</button>
