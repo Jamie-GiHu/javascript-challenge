@@ -42,8 +42,6 @@ The webpage has all the functionalities of Level 1, with the following additions
 
 * Back to top button for easier page navigation
 
-* The webpage is deployed on [GitHub pages.](https://jamie-gihu.github.io/web-design-challenge/WebVisualizations/)
-
 ### Files (in each UFO-level-1 and UFO-level-2 folders):
 1. JavaScript app (filename: app.js; in folder 'static' and subfolder 'js')
 2. JavaScript data (filename: data.js; in folder 'static' and subfolder 'js')
