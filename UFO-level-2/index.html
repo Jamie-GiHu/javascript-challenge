@@ -55,26 +55,32 @@
                                             <small id="text-format" class="form-text text muted">Enter mm/dd/yyyy</small>
                                         </li>
                                         <li class="filter list-group-item">
-                                            <select class="custom-select" name='country-select' id='country-select'>
-                                                <option selected>Country selection</option>
+                                            <select class="custom-select" name='country-select' id='country-select' onchange='displayAccordingly()'>
+                                                <option selected></option>
                                                 <option value="us">USA</option>
                                                 <option value="ca">Canada</option>
                                             </select>
                                         </li>
                                         <li class="filter list-group-item">
                                             <select class="custom-select" name="choices" id="choices">
-                                                <option selected>State selection</option>
+                                                <option selected></option>
                                                 <!-- populated using JavaScript: code in app.js -->
                                             </select>
                                         </li>
                                         <li class="filter list-group-item">
                                             <label for="city">Enter a City</label>
-                                            <input class="form-control" id="city-select" type="text" placeholder="phoenix">
+                                            <input class="form-control" id="city-select" type="text" placeholder="">
                                             <small id="text-format" class="form-text text muted">Enter city in small caps</small>
+                                        </li>
+                                        <li class="filter list-group-item">
+                                            <label for="shape">Enter a Shape</label>
+                                            <input class="form-control" id="shape-select" type="text" placeholder="">
+                                            <small id="text-format" class="form-text text muted">Enter shape in small caps</small>
                                         </li>
                                     </ul>
                                 </div>
-                                <button id="filter-btn" type="button" class="btn btn-primary btn-block">Filter Table</button>
+                                <button onclick="runEnter" id="filter-btn" type="button" class="btn btn-success btn-block">Filter Table</button>
+                                <button onclick="unfilterTable" id="unfilter-btn" type="button" class="btn btn-success btn-block">Remove Filter</button>
                             </form>
                         </div>
                         </div>

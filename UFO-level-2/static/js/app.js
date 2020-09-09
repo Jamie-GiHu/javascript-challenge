@@ -3,149 +3,144 @@ var tableData = data;
 
 // POPULATE TABLE WITH SIGHTING DATA FROM DATA.JS
 
-// Get a reference to the table body
-var tbody = d3.select("tbody");
+function populateTable() {
 
-// Loop through 'data' using forEach function
-data.forEach((sightingReport) => {
+    // Get a reference to the table body
+    var tbody = d3.select("tbody");
 
-    // Use d3 to append one table row for each sighting report object
-    var row = tbody.append("tr");
+    // Loop through 'data' using forEach function
+    data.forEach((sightingReport) => {
 
-    // Use 'Object.entries' loop through each sighting report key and value
-    Object.entries(sightingReport).forEach(([key,value]) => {
+        // Use d3 to append one table row for each sighting report object
+        var row = tbody.append("tr");
 
-        // Use d3 to append a cell to the row for each value in the sighting report object
-        var cell = row.append("td");
+        // Use 'Object.entries' loop through each sighting report key and value
+        Object.entries(sightingReport).forEach(([key,value]) => {
 
-        // Use d3 to update each cell's text with the value in the sighting report
-        cell.text(value);
+            // Use d3 to append a cell to the row for each value in the sighting report object
+            var cell = row.append("td");
 
+            // Use d3 to update each cell's text with the value in the sighting report
+            cell.text(value);
+
+        });
     });
-});
+};
 
-// DYNAMIC SELECT MENU
+// Run function to populate the table in entirety
+populateTable();
+
+// DYNAMIC SELECT MENU (STATIC DATA)
 
 // object literal holding data for option elements
-var Select_List_Data = {
-    
-    'choices': { // name of associated select box
+var usa = [ 
+            {text: 'Alaska',
+            value: 'ak'},
+            {text:'Alabama',
+            value:'al'},
+            {text:'Arkansas',
+            value:'ar'},
+            {text:'Arizona',
+            value:'az'},
+            {text:'California',
+            value:'ca'},
+            {text:'Colorado',
+            value:'co'},
+            {text:'Connecticut',
+            value:'ct'},
+            {text:'Florida',
+            value:'fl'},
+            {text:'Georgia',
+            value:'ga'},
+            {text:'Iowa',
+            value:'ia'},
+            {text:'Indiana',
+            value:'in'},
+            {text:'Kansas',
+            value:'ks'},
+            {text:'Kentucky',
+            value:'ky'},
+            {text:'Louisiana',
+            value:'la'},
+            {text:'Massachusetts',
+            value:'ma'},
+            {text:'Maryland',
+            value:'md'},
+            {text:'Michigan',
+            value:'mi'},
+            {text:'Missouri',
+            value:'mo'},
+            {text:'Mississippi',
+            value:'ms'},
+            {text:'North Carolina',
+            value:'nc'},
+            {text:'New Hampshire',
+            value:'nh'},
+            {text:'New Jersey',
+            value:'nj'},
+            {text:'New Mexico',
+            value:'nm'},
+            {text:'New York',
+            value:'ny'},
+            {text:'Ohio',
+            value:'oh'},
+            {text:'Oregon',
+            value:'or'},
+            {text:'Pennsylvania',
+            value:'pa'},
+            {text:'South Carolina',
+            value:'sc'},
+            {text:'Tennessee',
+            value:'tn'},
+            {text:'Texas',
+            value:'tx'},
+            {text:'Washington',
+            value:'wa'},
+            {text:'Wisconsin',
+            value:'wi'},
+            {text:'West Virginia',
+            value:'wv'}       
+];
+var canada = [
+            {text: 'Ontario',
+            value: 'on'}
+];
+
+function displayAccordingly() {
+
+    //Call mainMenu the main dropdown menu
+    var mainMenu = document.getElementById("country-select");
+
+    //Create the new dropdown menu
+    var whereToPut = document.getElementById("choices");
+    /* var newDropdown = document.createElement("select");
+    newDropdown.setAttribute('id',"newDropdownMenu");
+    whereToPut.appendChild(newDropdown); */
+
+    if (mainMenu.value == "us") { //The person chose USA
+
+        //Add list of options for US States
+        for (var i = 0; i < usa.length; i++) {
+        var usState = document.createElement("option");
+        usState.text = usa[i]["text"];
+        usState.value = usa[i]["value"];
+        whereToPut.add(usState,whereToPut.options[null]);
+        };
         
-        // names match option values in controlling select box
-        us: {
-            text: ['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','Florida','Georgia','Iowa','Indiana','Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Michigan','Missouri','Mississippi','North Carolina','New Hampshire','New Jersey','New Mexico','New York','Ohio','Arkansas','Oregon','Pennsylvania','South Carolina','Tennessee','Texas','Washington','Wisconsin','West Virginia'],
-            value: ['ak','al','ar','az','ca','co','ct','fl','ga','ia','in','ks','ky','la','ma','md','mi','mo','ms','nc','nh','nj','nm','ny','oh','on','or','pa','sc','tn','tx','wa','wi','wv']
-        },
-        ca: {
-            text: ['Ontario'],
-            value: ['on']
-        }
-    
-    }    
+
+    } else if (mainMenu.value == "ca") { //The person chose Canada
+
+        //Add list of options for Canadian States
+        for (var i = 0; i < canada.length; i++) {
+        var caState = document.createElement("option");
+        caState.text = canada[i].text;
+        caState.value = canada[i].value;
+        whereToPut.add(caState,whereToPut.options[null]);
+        };
+
+    };
+
 };
-
-// removes all option elements in select box 
-// removeGrp (optional) boolean to remove optgroups
-function removeAllOptions(sel, removeGrp) {
-    var len, groups, par;
-    if (removeGrp) {
-        groups = sel.getElementsByTagName('optgroup');
-        len = groups.length;
-        for (var i=len; i; i--) {
-            sel.removeChild( groups[i-1] );
-        }
-    }
-    
-    len = sel.options.length;
-    for (var i=len; i; i--) {
-        par = sel.options[i-1].parentNode;
-        par.removeChild( sel.options[i-1] );
-    }
-}
-
-function appendDataToSelect(sel, obj) {
-    var f = document.createDocumentFragment();
-    var labels = [], group, opts;
-    
-    function addOptions(obj) {
-        var f = document.createDocumentFragment();
-        var o;
-        
-        for (var i=0, len=obj.text.length; i<len; i++) {
-            o = document.createElement('option');
-            o.appendChild( document.createTextNode( obj.text[i] ) );
-            
-            if ( obj.value ) {
-                o.value = obj.value[i];
-            }
-            
-            f.appendChild(o);
-        }
-        return f;
-    }
-    
-    if ( obj.text ) {
-        opts = addOptions(obj);
-        f.appendChild(opts);
-    } else {
-        for ( var prop in obj ) {
-            if ( obj.hasOwnProperty(prop) ) {
-                labels.push(prop);
-            }
-        }
-        
-        for (var i=0, len=labels.length; i<len; i++) {
-            group = document.createElement('optgroup');
-            group.label = labels[i];
-            f.appendChild(group);
-            opts = addOptions(obj[ labels[i] ] );
-            group.appendChild(opts);
-        }
-    }
-    sel.appendChild(f);
-};
-
-// anonymous function assigned to onchange event of controlling select box
-document.forms['form'].elements['country-select'].onchange = function(e) {
-    // name of associated select box
-    var relName = 'choices';
-    
-    // reference to associated select box 
-    var relList = this.form.elements[ relName ];
-    
-    // get data from object literal based on selection in controlling select box (this.value)
-    var obj = Select_List_Data[ relName ][ this.value ];
-    
-    // remove current option elements
-    removeAllOptions(relList, true);
-    
-    // call function to add optgroup/option elements
-    // pass reference to associated select box and data for new options
-    appendDataToSelect(relList, obj);
-};
-
-// populate associated select box as page loads
-(function() { // immediate function to avoid globals
-    
-    var form = document.forms['form'];
-    
-    // reference to controlling select box
-    var sel = form.elements['country-select'];
-    sel.selectedIndex = 0;
-    
-    // name of associated select box
-    var relName = 'choices';
-    // reference to associated select box
-    var rel = form.elements[ relName ];
-    
-    // get data for associated select box passing its name
-    // and value of selected in controlling select box
-    var data = Select_List_Data[ relName ][ sel.value ];
-    
-    // add options to associated select box
-    appendDataToSelect(rel, data);
-    
-}());
 
 // FILTER TABLE BASED ON SELECTION
 
@@ -157,23 +152,41 @@ var form = d3.select("#form");
 button.on("click",runEnter);
 form.on("submit",runEnter);
 
-// complete the event handler function for the form
+// Complete the event handler function for the form
 function runEnter() {
 
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+    var filterDateTime = d3.select("#datetime");
+    var filterCountry = document.getElementById("country-select");
+    var filterState = document.getElementById("choices");
+    var filterCity = d3.select("#city-select");
+    var filterShape = d3.select("#shape-select");
 
     // Get the value property of the input element
-    var inputValue = inputElement.property("value");
-    
-    // Clear table values
-    tbody.html("");
+    var dateValue = filterDateTime.property("value");
+    var countryValue = filterCountry.value;
+    var stateValue = filterState.value;
+    var cityValue = filterCity.property("value");
+    var shapeValue = filterShape.property("value");
 
     // Filter through sighting report according to 'datetime' value from input element
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+    var filteredData = tableData.filter(sighting => (
+        (sighting.datetime === dateValue || dateValue === "") &&
+        (sighting.country === countryValue || countryValue === "") &&
+        (sighting.state === stateValue || stateValue === "") &&
+        (sighting.city === cityValue || cityValue === "") &&
+        (sighting.shape === shapeValue || shapeValue === "")
+        )
+    );
+
+    console.log(filteredData);
+
+    // Clear table values
+    var tbody = d3.select("tbody");
+    tbody.html("");
     
     // Loop through 'filteredData' to insert table rows and populate table values
     filteredData.forEach((sightingReport) => {
@@ -184,3 +197,20 @@ function runEnter() {
         });
     });
 };
+
+// UNFILTER TABLE
+
+// Use d3 to select the button and the form
+var button = d3.select("#unfilter-btn");
+
+// Create event handlers
+button.on("click",unfilterTable);
+
+// Complete the event handler function to clear filter input
+function unfilterTable() {
+
+    document.getElementById("form").reset();
+    
+    populateTable();
+
+}; 
