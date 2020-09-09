@@ -34,6 +34,8 @@ populateTable();
 
 // object literal holding data for option elements
 var usa = [ 
+            {text: '',
+            value: ''},
             {text: 'Alaska',
             value: 'ak'},
             {text:'Alabama',
@@ -113,11 +115,11 @@ function displayAccordingly() {
 
     //Create the new dropdown menu
     var whereToPut = document.getElementById("choices");
-    /* var newDropdown = document.createElement("select");
-    newDropdown.setAttribute('id',"newDropdownMenu");
-    whereToPut.appendChild(newDropdown); */
 
     if (mainMenu.value == "us") { //The person chose USA
+
+        // Clear list of options (if any)
+        document.querySelectorAll('#choices option').forEach(option => option.remove())
 
         //Add list of options for US States
         for (var i = 0; i < usa.length; i++) {
@@ -130,6 +132,9 @@ function displayAccordingly() {
 
     } else if (mainMenu.value == "ca") { //The person chose Canada
 
+        // Clear list of options (if any)
+        document.querySelectorAll('#choices option').forEach(option => option.remove())
+
         //Add list of options for Canadian States
         for (var i = 0; i < canada.length; i++) {
         var caState = document.createElement("option");
@@ -138,7 +143,7 @@ function displayAccordingly() {
         whereToPut.add(caState,whereToPut.options[null]);
         };
 
-    };
+    } else document.querySelectorAll('#choices option').forEach(option => option.remove())
 
 };
 
