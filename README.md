@@ -13,7 +13,7 @@ I have conquered both levels. :sweat_smile::alien:
 
 ### Level 1
 
-![](UFO_Level_1/static/images/Fig1.png)
+![](UFO-level-1/static/images/Fig1.png)
 
 * Custom web page
 
@@ -25,7 +25,7 @@ I have conquered both levels. :sweat_smile::alien:
 
 ### Level 2
 
-![](UFO_Level_2/static/images/Fig2.png)
+![](UFO-level-2/static/images/Fig2.png)
 
 The webpage has all the functionalities of Level 1, with the following additions:
 
@@ -44,7 +44,7 @@ The webpage has all the functionalities of Level 1, with the following additions
 
 * The webpage is deployed on [GitHub pages.](https://jamie-gihu.github.io/web-design-challenge/WebVisualizations/)
 
-### Files (in each UFO_Level_1 and UFO_Level_2 folders):
+### Files (in each UFO-level-1 and UFO-level-2 folders):
 1. JavaScript app (filename: app.js; in folder 'static' and subfolder 'js')
 2. JavaScript data (filename: data.js; in folder 'static' and subfolder 'js')
 3. HTML template (filename: index.html)
